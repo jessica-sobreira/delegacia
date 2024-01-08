@@ -1,15 +1,17 @@
 import express from "express";
-import { CrimonosoController } from "./controllers/criminoso.controller";
+import { CriminosoController } from "./controllers/criminoso.controller";
 
 const app = express();
 app.use(express.json());
 
-const criminosoController = new CrimonosoController();
+const criminosoController = new CriminosoController();
 
-// Rotas
-// http://localhost:3001/inserirCriminoso
-//CREATE
 app.post("/inserirCriminoso", criminosoController.inserirCriminoso);
+app.get("/obterCriminoso/:id", criminosoController.obterCriminoso);
+app.put("/atualizarCriminoso/:id", criminosoController.atualizarCriminoso);
+app.delete("/deletarCriminoso/:id", criminosoController.deletarCriminoso);
+app.get("/listarCriminosos", criminosoController.listarCriminosos);
+
 
 app.listen(3001, () => {
     console.log("API está rodando!");
