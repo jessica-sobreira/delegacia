@@ -11,19 +11,19 @@ datasource db {
 }
 
 model Criminoso {
-  id_criminoso Int @id @default(autoincrement())
+  id_criminoso Int @id @default(autoincrement()) @map("idCriminoso")
   nome String
-  data_nascimento DateTime
+  data_nascimento DateTime @map("dataNascimento")
   crimes Crime[]
   
   @@map("criminoso") 
 }
 
 model Crime {
-  id_crime Int @id @default(autoincrement())
-  id_criminoso Int
+  id_crime Int @id @default(autoincrement()) @map("idCrime")
+  id_criminoso Int @map("idCriminoso")
   descricao String
-  data_crime DateTime
+  data_crime DateTime @map("dataCrime")
   criminoso Criminoso @relation(fields: [id_criminoso], references: [id_criminoso])
   armas Arma[]
   
@@ -31,10 +31,10 @@ model Crime {
 }
 
 model Arma {
-  id_arma Int @id @default(autoincrement())
-  id_crime Int
+  id_arma Int @id @default(autoincrement()) @map("idArma")
+  id_crime Int @map("idCrime")
   tipo String
-  numero_serie String
+  numero_serie String @map("serie")
   crime Crime @relation(fields: [id_crime], references: [id_crime])
   
   @@map("arma") 

@@ -4,7 +4,7 @@ export class CriminosoModel {
 
     constructor(
         public nome: string,
-        public dataNascimento: string,
+        public dataNascimento: Date,
     ) {
         this.idCriminoso = Math.random();
     }
